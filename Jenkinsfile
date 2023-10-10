@@ -2,12 +2,9 @@ pipeline {
     agent {
         docker {
             image '31z4/tox:latest'
-            args '-u 10000'
+            args '-v cache:/.cache'
         }
     }
-    // environment {
-    //     PRE_COMMIT_HOME=
-    // }
     stages {
         stage('Debug') {
             steps {
