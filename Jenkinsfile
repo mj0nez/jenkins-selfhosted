@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'mj0nez/tox-ci:latest'
+            image '31z4/tox:latest'
             args '-u 10000'
         }
     }
