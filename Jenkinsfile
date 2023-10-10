@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker {
             image 'mj0nez/tox-ci:latest'
-            // args '-u tox'
+            args '-u 10000'
         }
     }
     // environment {
@@ -12,7 +12,7 @@ pipeline {
         stage('Debug') {
             steps {
                 sh 'env'
-                sh 'whoami'
+                sh 'echo ${UID}'
                 sh 'pwd'
             }
         }
