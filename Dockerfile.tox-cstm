@@ -1,0 +1,9 @@
+FROM 31z4/tox:latest as base
+
+# switch back to to allow using /.cache
+USER root
+
+RUN mkdir ${HOME}/.cache ${HOME}/.local
+
+
+USER tox
