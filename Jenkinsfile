@@ -10,7 +10,6 @@ pipeline {
         stage('Debug') {
             steps {
                 sh 'env'
-                sh "echo ${UID}"
                 sh 'pwd'
             }
         }
