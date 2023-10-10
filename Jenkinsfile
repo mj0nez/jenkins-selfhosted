@@ -3,7 +3,7 @@ pipeline {
         docker {
             image '31z4/tox:latest'
             // image 'mj0nez/tox-ci:latest'
-            args '--tmpfs /.cache'
+            // args '--tmpfs /.cache'
         }
     }
     environment {
