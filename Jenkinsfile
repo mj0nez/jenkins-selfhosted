@@ -2,14 +2,14 @@ pipeline {
     agent {
         docker {
             image '31z4/tox:latest'
-            args '-v cache:/.cache'
+            args '--tmpfs /.cache'
         }
     }
     stages {
         stage('Debug') {
             steps {
                 sh 'env'
-                sh 'echo ${UID}'
+                sh 'echo "${UID}"'
                 sh 'pwd'
             }
         }
