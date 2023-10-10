@@ -5,10 +5,15 @@ pipeline {
             // args '-u tox'
         }
     }
+    // environment {
+    //     PRE_COMMIT_HOME=
+    // }
     stages {
         stage('Debug') {
             steps {
                 sh 'env'
+                sh 'whoami'
+                sh 'pwd'
             }
         }
 
