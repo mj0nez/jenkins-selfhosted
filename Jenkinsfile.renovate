@@ -14,6 +14,7 @@ pipeline {
         GITHUB_COM_TOKEN    = credentials('RENOVATE_TOKEN')
         GIT_AUTHOR_NAME = 'renovate-bot'
         GIT_COMMITTER_NAME = 'renovate-bot'
+        // parse repo url to {repo_owner}/{repo_name}
         // https://stackoverflow.com/a/55500013 and https://stackoverflow.com/a/69917658
         RENOVATE_REPOSITORIES = GIT_URL.replaceFirst(/^.*?(?::\/\/.*?\/|:)(.*).git$/, '$1')
         RENOVATE_ONBOARDING_CONFIG = '{ "extends":["config:base"] }'
