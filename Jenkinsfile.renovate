@@ -14,7 +14,7 @@ pipeline {
         GITHUB_COM_TOKEN    = credentials('RENOVATE_TOKEN')
         GIT_AUTHOR_NAME = 'Renovate Bot'
         GIT_COMMITTER_NAME = 'Renovate Bot'
-        // RENOVATE_REPOSITORIES = '/mj0nez/log4j-jsonevent-layout, mj0nez/jenkins-selfthosted'
+        RENOVATE_REPOSITORIES = 'mj0nez/jenkins-selfthosted'
         RENOVATE_ONBOARDING_CONFIG = '{ "extends":["config:base"] }'
     }
 
