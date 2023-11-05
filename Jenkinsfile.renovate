@@ -14,9 +14,9 @@ pipeline {
         GITHUB_COM_TOKEN    = credentials('RENOVATE_TOKEN')
         GIT_AUTHOR_NAME = 'Renovate Bot'
         GIT_COMMITTER_NAME = 'Renovate Bot'
-        RENOVATE_REPOSITORIES = 'mj0nez/jenkins-selfthosted'
+        // https://stackoverflow.com/a/55500013 and https://stackoverflow.com/a/69917658
+        RENOVATE_REPOSITORIES = GIT_URL.replaceFirst(/^.*?(?::\/\/.*?\/|:)(.*).git$/, '$1')
         RENOVATE_ONBOARDING_CONFIG = '{ "extends":["config:base"] }'
-        GIT_REPO_NAME = GIT_URL.replaceFirst(/^.*?(?::\/\/.*?\/|:)(.*).git$/, '$1')
     }
 
     options {
