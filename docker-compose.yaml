@@ -9,7 +9,7 @@ volumes:
 
 services:
   docker:
-    image: docker:dind
+    image: docker:24.0.7-dind
     container_name: jenkins-docker
     privileged: true
     user: root

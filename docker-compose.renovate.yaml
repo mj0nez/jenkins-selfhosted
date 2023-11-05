@@ -1,0 +1,27 @@
+version: '3.8'
+volumes:
+  tmp_renovate:
+  
+services:
+  renovate:
+    image: renovate/renovate
+    
+    volumes:
+      - tmp_renovate:/tmp
+    environment:
+      # - CONFIGURATION = 'Release'
+      # - TZ = 'Europe/Berlin'
+      # - ENV = '/usr/local/etc/env'
+      RENOVATE_TOKEN: $GITHUB_PAT
+      # - RENOVATE_DOCKER_USER = 'root'
+      # - NPM_TOKEN = credentials('XX_NPM_TOKEN')
+      # - SVC_CI = credentials('svc-ci')
+      LOG_LEVEL: 'debug'
+      # -  renovate/renovate renovate-tests/gomod1
+      # - GIT_AUTHOR_NAME = 'Renovate Bot'
+      # - GIT_AUTHOR_EMAIL = 'bot@domain.de'
+      # - GIT_COMMITTER_NAME = 'Renovate Bot'
+      # - GIT_COMMITTER_EMAIL = 'bot@domain.de'
+    command:
+      # - --include-forks=true 
+      # - mj0nez/log4j-jsonevent-layout

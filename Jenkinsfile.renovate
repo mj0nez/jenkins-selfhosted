@@ -1,0 +1,56 @@
+pipeline {
+    agent {
+        docker {
+            image 'renovate/renovate:latest'
+            args '-v tmp_renovate:/tmp'
+        }
+    }
+    environment {
+        LOG_LEVEL           = 'debug'
+        // CONFIGURATION       = 'Release'
+        TZ                  = 'Europe/Berlin'
+        // ENV                 = '/usr/local/etc/env'
+        RENOVATE_TOKEN      = credentials('RENOVATE_TOKEN')
+        GITHUB_COM_TOKEN    = credentials('RENOVATE_TOKEN')
+        GIT_AUTHOR_NAME = 'renovate-bot'
+        GIT_COMMITTER_NAME = 'renovate-bot'
+        // parse repo url to {repo_owner}/{repo_name}
+        // https://stackoverflow.com/a/55500013 and https://stackoverflow.com/a/69917658
+        RENOVATE_REPOSITORIES = GIT_URL.replaceFirst(/^.*?(?::\/\/.*?\/|:)(.*).git$/, '$1')
+        RENOVATE_ONBOARDING_CONFIG = '{ "extends":["config:base"] }'
+    }
+
+    options {
+        disableConcurrentBuilds()
+        // timeout(time: 1, unit: 'HOURS')
+        // ansiColor('xterm')
+        buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '240')
+    }
+
+    stages {
+        stage('debug'){
+            steps {
+                sh 'env'
+            }
+        }
+        stage('init') {
+            steps {
+                sh 'renovate --version'
+                sh 'rm -f renovate.log'
+            }
+        }
+
+        stage('renovate') {
+            steps {
+                sh 'renovate --log-file renovate.log --log-file-level debug'
+            }
+        }
+    }
+
+    post {
+        always {
+            archiveArtifacts allowEmptyArchive: true, artifacts: 'renovate.log'
+        }
+    }
+
+}
