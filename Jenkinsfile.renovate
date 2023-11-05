@@ -7,7 +7,7 @@ pipeline {
     }
     environment {
         LOG_LEVEL           = 'debug'
-        CONFIGURATION       = 'Release'
+        // CONFIGURATION       = 'Release'
         TZ                  = 'Europe/Berlin'
         ENV                 = '/usr/local/etc/env'
         RENOVATE_TOKEN      = credentials('RENOVATE_TOKEN')
@@ -16,6 +16,13 @@ pipeline {
         // GIT_COMMITTER_NAME = 'Renovate Bot'
         RENOVATE_REPOSITORIES = '/mj0nez/log4j-jsonevent-layout, mj0nez/jenkins-selfthosted'
         // RENOVATE_ONBOARDING_CONFIG = '{ "extends":["config:base"] }'
+    }
+
+    options {
+        disableConcurrentBuilds()
+        timeout(time: 1, unit: 'HOURS')
+        ansiColor('xterm')
+        buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '240')
     }
 
     stages {
