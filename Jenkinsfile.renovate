@@ -9,7 +9,7 @@ pipeline {
         LOG_LEVEL           = 'debug'
         // CONFIGURATION       = 'Release'
         TZ                  = 'Europe/Berlin'
-        ENV                 = '/usr/local/etc/env'
+        // ENV                 = '/usr/local/etc/env'
         RENOVATE_TOKEN      = credentials('RENOVATE_TOKEN')
         GITHUB_COM_TOKEN    = credentials('RENOVATE_TOKEN')
         // GIT_AUTHOR_NAME = 'Renovate Bot'
