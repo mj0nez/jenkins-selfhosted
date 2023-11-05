@@ -12,8 +12,8 @@ pipeline {
         // ENV                 = '/usr/local/etc/env'
         RENOVATE_TOKEN      = credentials('RENOVATE_TOKEN')
         GITHUB_COM_TOKEN    = credentials('RENOVATE_TOKEN')
-        GIT_AUTHOR_NAME = 'Renovate Bot'
-        GIT_COMMITTER_NAME = 'Renovate Bot'
+        GIT_AUTHOR_NAME = 'renovate-bot'
+        GIT_COMMITTER_NAME = 'renovate-bot'
         // https://stackoverflow.com/a/55500013 and https://stackoverflow.com/a/69917658
         RENOVATE_REPOSITORIES = GIT_URL.replaceFirst(/^.*?(?::\/\/.*?\/|:)(.*).git$/, '$1')
         RENOVATE_ONBOARDING_CONFIG = '{ "extends":["config:base"] }'
