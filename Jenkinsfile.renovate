@@ -21,7 +21,7 @@ pipeline {
     options {
         disableConcurrentBuilds()
         // timeout(time: 1, unit: 'HOURS')
-        ansiColor('xterm')
+        // ansiColor('xterm')
         buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '240')
     }
 
