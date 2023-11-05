@@ -3,5 +3,6 @@
   "baseBranches": [
     "$default",
     "add-renovate"
-  ]
+  ],
+  "prHourlyLimit": 10
 }
